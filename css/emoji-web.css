@@ -1,11 +1,11 @@
 .emoji-web {
 	background-repeat: no-repeat;
-	width: 20px;
-	height: 20px;
+	width: 64px;
+	height: 64px;
 	display: -moz-inline-stack;
 	display: inline-block;
 	vertical-align: top;
-	zoom: 1;
+	zoom: 0.5;
 	*display: inline;
 }
 .ewd83d-de00 {background: url('../sheets/v11_emoji2.0x_0_0.png') -0px -0px;}

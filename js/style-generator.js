@@ -8,7 +8,7 @@ var add = 2;
 var splitCount = 4;
 var cols = [[15, 15, 15, 15], [6, 6, 6, 6], [8, 8, 8, 8], [9, 9, 9, 9], [10, 10, 10, 10]];
 
-var commonStyle = '.emoji-web {\n\tbackground-repeat: no-repeat;\n\twidth: 20px;\n\theight: 20px;\n\tdisplay: -moz-inline-stack;\n\tdisplay: inline-block;\n\tvertical-align: top;\n\tzoom: 1;\n\t*display: inline;\n}';
+var commonStyle = '.emoji-web {\n\tbackground-repeat: no-repeat;\n\twidth: 64px;\n\theight: 64px;\n\tdisplay: -moz-inline-stack;\n\tdisplay: inline-block;\n\tvertical-align: top;\n\tzoom: 0.5;\n\t*display: inline;\n}';
 
 var styleStrings = [commonStyle];
 
