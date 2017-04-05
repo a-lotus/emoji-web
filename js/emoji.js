@@ -10,6 +10,7 @@ exports.makeClassName = makeClassName;
 exports.unifiedToHTML = unifiedToHTML;
 exports.fixEmoji = fixEmoji;
 exports.replaceEmoji = replaceEmoji;
+var availableSizes = exports.availableSizes = [16, 24, 32, 64];
 
 function utfMark(char) {
 	var utfNumber = char.charCodeAt(0).toString(16);
@@ -29,7 +30,6 @@ function unifiedToHTML(text) {
 		return '<span class="emoji emoji' + em[2] + '" title="' + em[1] + '"></span>';
 	});
 }
-
 
 function fixEmoji(emoji) {
 	var ch;
@@ -62,44 +62,30 @@ function fixEmoji(emoji) {
 	return emoji;
 }
 
-
-
-// function replaceEmoji(CharSequence cs, Paint.FontMetricsInt fontMetrics, int size, boolean createNew, int[] emojiOnly) {
-function replaceEmoji(cs, size, createNew, emojiOnly) {
+function replaceEmoji(cs, size, className, emojiOnly) {
 	if (cs == null || cs.length == 0) {
 		return cs;
 	}
+	size = parseInt(size);
+	if (isNaN(size) || availableSizes.indexOf(size) === -1) {
+		size = 64;
+	}
+	var sizeClassName = size === 64 ? '' : 'ew'+size+' ';
+	var additionalClassName = typeof className === 'string' ? ' '+className.trim() : '';
 
 	var c;
 	var buf = 0;
 	var length = cs.length;
-	var emojiCount = 0;
 	var startIndex = -1;
 	var startLength = 0;
 	var previousGoodIndex = 0;
 
 	var emojiCode = '';
-
 	var doneEmoji = false;
-
-	//String str = "\"\uD83D\uDC68\uD83C\uDFFB\u200D\uD83C\uDFA4\""
-	//SpannableStringLight.isFieldsAvailable();
-	//SpannableStringLight s = new SpannableStringLight(cs.toString());
-	// Spannable s;
-	// if (!createNew && cs instanceof Spannable) {
-	// 	s = (Spannable) cs;
-	// } else {
-	// 	s = Spannable.Factory.getInstance().newSpannable(cs.toString());
-	// }
-	// StringBuilder addionalCode = new StringBuilder(2);
-	// boolean nextIsSkinTone;
-	// EmojiDrawable drawable;
-	// EmojiSpan span;
-	// int nextValidLength;
-	// boolean nextValid;
-	//s.setSpansCount(emojiCount);
-
-	var s = '';
+	var s = Array(length);
+	for (var i = 0; i < length; i++) {
+		s[i] = cs.charAt(i);
+	}
 
 	try {
 		for (var i = 0; i < length; i++) {
@@ -191,27 +177,20 @@ function replaceEmoji(cs, size, createNew, emojiOnly) {
 					emojiOnly[0]++;
 				}
 
+				for (var a = 1; a < startLength; a++) {
+					s[startIndex+a] = null;
+				}
+				s[startIndex] = '<span class="emoji-web ' + sizeClassName + makeClassName(emojiCode) + additionalClassName + '"></span>';
 
-				// drawable = Emoji.getEmojiDrawable(emojiCode.subSequence(0, emojiCode.length()));
-				console.log('emojiCode', emojiCode);
-				// if (drawable != null) {
-					// span = new EmojiSpan(drawable, DynamicDrawableSpan.ALIGN_BOTTOM, size, fontMetrics);
-					// s.setSpan(span, startIndex, startIndex + startLength, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-					// emojiCount++;
-				// }
-				s += '<span class="emoji-web ' + makeClassName(emojiCode) + '"></span>';
 				startLength = 0;
 				startIndex = -1;
 				emojiCode = '';
 				doneEmoji = false;
 			}
-			// if (Build.VERSION.SDK_INT < 23 && emojiCount >= 50) {
-				// break;
-			// }
 		}
 	} catch (e) {
-		console.log('Exception', e);
+		if (typeof console === 'object') console.log('[emoji-web] Exception', e);
 		return cs;
 	}
-	return s;
+	return s.join('');
 }

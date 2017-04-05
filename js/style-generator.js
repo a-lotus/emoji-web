@@ -8,9 +8,12 @@ var add = 2;
 var splitCount = 4;
 var cols = [[15, 15, 15, 15], [6, 6, 6, 6], [8, 8, 8, 8], [9, 9, 9, 9], [10, 10, 10, 10]];
 
-var commonStyle = '.emoji-web {\n\tbackground-repeat: no-repeat;\n\twidth: 64px;\n\theight: 64px;\n\tdisplay: -moz-inline-stack;\n\tdisplay: inline-block;\n\tvertical-align: top;\n\tzoom: 0.5;\n\t*display: inline;\n}';
-
-var styleStrings = [commonStyle];
+var styleStrings = [
+	'.emoji-web {\n\tbackground-repeat: no-repeat;\n\twidth: 64px;\n\theight: 64px;\n\tdisplay: -moz-inline-stack;\n\tdisplay: inline-block;\n\tvertical-align: top;\n\t*display: inline;\n}',
+	'.ew32 {zoom: 0.5}',
+	'.ew24 {zoom: 0.375}',
+	'.ew16 {zoom: 0.25}'
+];
 
 for (var j = 0; j < data.length; j++) {
 	var count2 = Math.ceil(data[j].length / splitCount);
@@ -29,15 +32,7 @@ for (var j = 0; j < data.length; j++) {
 
 		var styleString = '.' + makeClassName(data[j][i]) + ' {background: url(\'../sheets/v11_emoji2.0x_' + j + '_' + page + '.png\') -' + left + 'px -' + top + 'px;}';
 		styleStrings.push(styleString);
-
-		// console.log('--\nleft %d, top %d, right %d, bottom %d', left, top, right, bottom);
-		// console.log('page1=%d, page2=%d', j, page);
-		// console.log(data[j][i]);
-		// console.log('utfNumber=', utfNumber);
-		// console.log(styleString);
 	}
 }
-
-// console.log(styleStrings.join('\n'));
 
 module.exports = styleStrings.join('\n');

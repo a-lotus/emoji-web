@@ -4,10 +4,12 @@
 	height: 64px;
 	display: -moz-inline-stack;
 	display: inline-block;
-	vertical-align: top;
-	zoom: 0.5;
+	vertical-align: middle;
 	*display: inline;
 }
+.ew32 {zoom: 0.5}
+.ew24 {zoom: 0.375}
+.ew16 {zoom: 0.25}
 .ewd83d-de00 {background: url('../sheets/v11_emoji2.0x_0_0.png') -0px -0px;}
 .ewd83d-de03 {background: url('../sheets/v11_emoji2.0x_0_0.png') -66px -0px;}
 .ewd83d-de04 {background: url('../sheets/v11_emoji2.0x_0_0.png') -132px -0px;}
