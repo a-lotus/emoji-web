@@ -17,8 +17,10 @@ var styles = require('../css/emoji-web.css');
 // window.ed = EmojiData;
 
 var str = emojiWeb.replaceEmoji("Какой-то нормальный текст... 🏠🏫🏢 😉 😍 😛 😭 😴 😵 😬 😇 😏 👮 👷 💂 bovo 🙅👎 !!! 🏩🏨💒⛪🏬🌇", 32, 'bobo');
+var str2 = emojiWeb.replaceEmoji(emojiWeb.dataColored[3].join(' '), 32);
+var str3 = emojiWeb.replaceEmoji(emojiWeb.fixEmoji(emojiWeb.dataColored[3].join(' ')), 32);
 document.addEventListener("DOMContentLoaded", function() {
 	var newBlock = document.createElement('div');
-	newBlock.innerHTML = str;
+	newBlock.innerHTML = str + '<hr>' + str2 + '<hr>' + str3;
 	document.body.appendChild(newBlock);
 });

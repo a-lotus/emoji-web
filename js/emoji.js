@@ -12,11 +12,11 @@ exports.replaceEmoji = replaceEmoji;
 var availableSizes = exports.availableSizes = [16, 24, 32, 64];
 
 function utfMark(char) {
-	var utfNumber = char.charCodeAt(0).toString(16);
-	if (char.length == 2) {
-		return utfNumber + '-' + char.charCodeAt(1).toString(16);
+	var utfNumbers = new Array(char.length);
+	for (var i = 0; i < char.length; i++) {
+		utfNumbers[i] = char.charCodeAt(i).toString(16);
 	}
-	return utfNumber;
+	return utfNumbers.join('-');
 }
 
 function makeClassName(char) {
