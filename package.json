@@ -6,7 +6,12 @@
   "author": "a-lotus",
   "license": "GPL-2.0",
   "main": "js/index.js",
+  "home": "https://github.com/a-lotus/emoji-web",
   "scripts": {
     "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/a-lotus/emoji-web.git"
   }
 }

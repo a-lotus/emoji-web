@@ -7,7 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.utfMark = utfMark;
 exports.makeClassName = makeClassName;
-exports.unifiedToHTML = unifiedToHTML;
 exports.fixEmoji = fixEmoji;
 exports.replaceEmoji = replaceEmoji;
 var availableSizes = exports.availableSizes = [16, 24, 32, 64];
@@ -22,13 +21,6 @@ function utfMark(char) {
 
 function makeClassName(char) {
 	return 'ew' + utfMark(char);
-}
-
-function unifiedToHTML(text) {
-	return text.replace(jEmoji.EMOJI_RE(), function (_, m) {
-		var em = EMOJI_MAP[m];
-		return '<span class="emoji emoji' + em[2] + '" title="' + em[1] + '"></span>';
-	});
 }
 
 function fixEmoji(emoji) {
@@ -180,7 +172,7 @@ function replaceEmoji(cs, size, className, emojiOnly) {
 				for (var a = 1; a < startLength; a++) {
 					s[startIndex+a] = null;
 				}
-				s[startIndex] = '<span class="emoji-web ' + sizeClassName + makeClassName(emojiCode) + additionalClassName + '"></span>';
+				s[startIndex] = '<span class="emoji-web ' + sizeClassName + makeClassName(emojiCode) + additionalClassName + '">' + emojiCode + '</span>';
 
 				startLength = 0;
 				startIndex = -1;

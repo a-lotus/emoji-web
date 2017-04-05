@@ -9,10 +9,10 @@ var splitCount = 4;
 var cols = [[15, 15, 15, 15], [6, 6, 6, 6], [8, 8, 8, 8], [9, 9, 9, 9], [10, 10, 10, 10]];
 
 var styleStrings = [
-	'.emoji-web {\n\tbackground-repeat: no-repeat;\n\twidth: 64px;\n\theight: 64px;\n\tdisplay: -moz-inline-stack;\n\tdisplay: inline-block;\n\tvertical-align: top;\n\t*display: inline;\n}',
-	'.ew32 {zoom: 0.5}',
-	'.ew24 {zoom: 0.375}',
-	'.ew16 {zoom: 0.25}'
+	'.emoji-web{\n\tfont-size:0;\n\twidth:64px;\n\theight:64px;\n\tdisplay:inline-block;\n\tvertical-align:top;\n}',
+	'.ew32{zoom:0.5}',
+	'.ew24{zoom:0.375}',
+	'.ew16{zoom:0.25}'
 ];
 
 for (var j = 0; j < data.length; j++) {
