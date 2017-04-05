@@ -30,7 +30,7 @@ for (var j = 0; j < data.length; j++) {
 		// const right = (row + 1) * emojiFullSize + row * add;
 		// const bottom = (col + 1) * emojiFullSize + col * add;
 
-		var styleString = '.' + makeClassName(data[j][i]) + ' {background: url(\'../sheets/v11_emoji2.0x_' + j + '_' + page + '.png\') -' + left + 'px -' + top + 'px;}';
+		var styleString = '.' + makeClassName(data[j][i]) + '{background:url(\'../sheets/v11_emoji2.0x_' + j + '_' + page + '.png\') -' + left + 'px -' + top + 'px;}';
 		styleStrings.push(styleString);
 	}
 }
