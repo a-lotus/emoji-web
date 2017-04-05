@@ -3,7 +3,6 @@
 // import { emojiSecret, emojiColored, dataColored, data, emojiToFE0FMap, dataCharsMap, emojiColoredMap } from './emoji-data'
 // var EmojiData = require('./emoji-data');
 var emojiWeb = require('../js/index');
-var styles = require('../css/emoji-web.css');
 
 // console.log('fixEmoji(🏠🏫🏢🏣🏥🏦🏪🏩🏨💒⛪🏬🌇)\n', emoji.fixEmoji('🏠🏫🏢🏣🏥🏦🏪🏩🏨💒⛪🏬🌇'));
 // console.log('fixEmoji(# 0 1 2 3 4 5 6 7 8 9 ⃣   🇦 🇧 🇨 🇩 🇪 🇫 🇬 🇭 🇮 🇯 🇰 🇱 🇲 🇳 🇴 🇵 🇶 🇷 🇸 🇹 🇺 🇻 🇼 🇽 🇾 🇿  #⃣0⃣1⃣2⃣3⃣4⃣5⃣6⃣7⃣8⃣9⃣©®  ‼⁉)\n', emoji.fixEmoji('# 0 1 2 3 4 5 6 7 8 9 ⃣   🇦 🇧 🇨 🇩 🇪 🇫 🇬 🇭 🇮 🇯 🇰 🇱 🇲 🇳 🇴 🇵 🇶 🇷 🇸 🇹 🇺 🇻 🇼 🇽 🇾 🇿  #⃣0⃣1⃣2⃣3⃣4⃣5⃣6⃣7⃣8⃣9⃣©®  ‼⁉'));

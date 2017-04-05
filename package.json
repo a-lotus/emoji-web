@@ -2,7 +2,7 @@
   "name": "emoji-web",
   "version": "1.0.0",
   "description": "Emoji library for use by JavaScript in browsers.",
-  "main": "index.js",
+  "main": "js/index.js",
   "author": "a-lotus",
   "license": "GPL-2.0",
   "main": "js/index.js",
