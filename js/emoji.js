@@ -1,6 +1,33 @@
 'use strict';
 
 var EmojiData = require('./emoji-data.js');
+var imagePositions = require('../data/positions.js');
+var settings = require('./sheets-settings.js');
+var blankPath = require('../blank.gif');
+var styles = require('../css/emoji-web.css');
+var ewClassName = styles && styles['emoji-web'] ? styles['emoji-web'] : 'emoji-web';
+
+var imgPaths = Object.create(null);
+imgPaths['00'] = require('../sheets/v11_emoji2.0x_0_0.png');
+imgPaths['13'] = require('../sheets/v11_emoji2.0x_1_3.png');
+imgPaths['32'] = require('../sheets/v11_emoji2.0x_3_2.png');
+imgPaths['01'] = require('../sheets/v11_emoji2.0x_0_1.png');
+imgPaths['20'] = require('../sheets/v11_emoji2.0x_2_0.png');
+imgPaths['33'] = require('../sheets/v11_emoji2.0x_3_3.png');
+imgPaths['02'] = require('../sheets/v11_emoji2.0x_0_2.png');
+imgPaths['21'] = require('../sheets/v11_emoji2.0x_2_1.png');
+imgPaths['40'] = require('../sheets/v11_emoji2.0x_4_0.png');
+imgPaths['03'] = require('../sheets/v11_emoji2.0x_0_3.png');
+imgPaths['22'] = require('../sheets/v11_emoji2.0x_2_2.png');
+imgPaths['41'] = require('../sheets/v11_emoji2.0x_4_1.png');
+imgPaths['10'] = require('../sheets/v11_emoji2.0x_1_0.png');
+imgPaths['23'] = require('../sheets/v11_emoji2.0x_2_3.png');
+imgPaths['42'] = require('../sheets/v11_emoji2.0x_4_2.png');
+imgPaths['11'] = require('../sheets/v11_emoji2.0x_1_1.png');
+imgPaths['30'] = require('../sheets/v11_emoji2.0x_3_0.png');
+imgPaths['43'] = require('../sheets/v11_emoji2.0x_4_3.png');
+imgPaths['12'] = require('../sheets/v11_emoji2.0x_1_2.png');
+imgPaths['31'] = require('../sheets/v11_emoji2.0x_3_1.png');
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -9,7 +36,6 @@ exports.utfMark = utfMark;
 exports.makeClassName = makeClassName;
 exports.fixEmoji = fixEmoji;
 exports.replaceEmoji = replaceEmoji;
-var availableSizes = exports.availableSizes = [16, 24, 32, 64];
 
 function utfMark(char) {
 	var utfNumbers = new Array(char.length);
@@ -58,12 +84,22 @@ function replaceEmoji(cs, size, className, emojiOnly) {
 	if (cs == null || cs.length == 0) {
 		return cs;
 	}
+
 	size = parseInt(size);
-	if (isNaN(size) || availableSizes.indexOf(size) === -1) {
+	// if (isNaN(size) || availableSizes.indexOf(size) === -1) {
+	if (isNaN(size)) {
 		size = 64;
 	}
+	var scale = size/64;
+
 	var sizeClassName = size === 64 ? '' : 'ew'+size+' ';
-	var additionalClassName = typeof className === 'string' ? ' '+className.trim() : '';
+	var clssnm = typeof className === 'string' ? ewClassName + ' ' + className.trim() : ewClassName;
+
+	function htmlTemplate(emojiCode) {
+		var p = imagePositions[emojiCode];
+		return '<img src="' + blankPath + '" class="' + clssnm + '" alt="' + emojiCode + '" '
+			+ 'style="height: '+size+'px; width: '+size+'px; background: url(' + imgPaths[''+p[0]+p[1]] + ') -' + p[2]*scale + 'px -' + p[3]*scale + 'px / ' + settings.cols[p[0]][p[1]]*(settings.emojiFullSize+settings.add)*scale + 'px;" draggable="false"/>';
+	}
 
 	var c;
 	var buf = 0;
@@ -172,7 +208,7 @@ function replaceEmoji(cs, size, className, emojiOnly) {
 				for (var a = 1; a < startLength; a++) {
 					s[startIndex+a] = null;
 				}
-				s[startIndex] = '<span class="emoji-web ' + sizeClassName + makeClassName(emojiCode) + additionalClassName + '">' + emojiCode + '</span>';
+				s[startIndex] = htmlTemplate(emojiCode);
 
 				startLength = 0;
 				startIndex = -1;

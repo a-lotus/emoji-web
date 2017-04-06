@@ -8,7 +8,8 @@
   "main": "js/index.js",
   "home": "https://github.com/a-lotus/emoji-web",
   "scripts": {
-    "build": "node build.js"
+    "build": "node build.js",
+    "clear": "rm -rf css data"
   },
   "repository": {
     "type": "git",

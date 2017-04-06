@@ -2,7 +2,7 @@
 
 var EmojiData = require('./emoji-data.js');
 var emoji = require('./emoji');
-var styles = require('../css/emoji-web.css');
+// var styles = require('../css/emoji-web.css');
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
