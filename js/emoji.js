@@ -36,6 +36,7 @@ exports.utfMark = utfMark;
 exports.makeClassName = makeClassName;
 exports.fixEmoji = fixEmoji;
 exports.replaceEmoji = replaceEmoji;
+exports.ewClassName = ewClassName;
 
 function utfMark(char) {
 	var utfNumbers = new Array(char.length);
