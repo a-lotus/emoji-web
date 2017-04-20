@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --progress",
     "run-server": "http-server .",
-    "start": "yarn run build && yarn run run-server"
+    "start": "yarn run build && yarn run run-server",
+    "lint": "standard --verbose *.js | snazzy"
   },
   "dependencies": {
     "css-loader": "^0.28.0",

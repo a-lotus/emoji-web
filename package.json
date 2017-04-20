@@ -9,7 +9,8 @@
   "home": "https://github.com/a-lotus/emoji-web",
   "scripts": {
     "build": "node build.js",
-    "clear": "rm -rf css data"
+    "clear": "rm -rf css data",
+    "lint": "standard --verbose js/*.js | snazzy"
   },
   "repository": {
     "type": "git",
